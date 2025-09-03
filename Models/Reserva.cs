@@ -15,16 +15,19 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
+
+            //Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
+            
+            bool capacidade = Suite.Capacidade >= hospedes.Count;
+
+            if (capacidade == true)
             {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                //Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
+                throw new Exception("A capacidade da suíte é menor que o número de hóspedes.");
             }
         }
 
@@ -35,26 +38,25 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            //Retorna a quantidade de hóspedes (propriedade Hospedes)
+            
+            return Hospedes.Count;
         }
 
-        public decimal CalcularValorDiaria()
+        public double CalcularValorDiaria()
         {
             // TODO: Retorna o valor da diária
             // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+            double valorDiaria = DiasReservados * Convert.ToDouble(Suite.ValorDiaria);
 
             // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
+            
+            if (DiasReservados >= 10)
             {
-                valor = 0;
+                valorDiaria = valorDiaria * 0.9;
             }
 
-            return valor;
+            return valorDiaria;
         }
     }
 }
